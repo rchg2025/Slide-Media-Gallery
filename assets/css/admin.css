@@ -1,0 +1,199 @@
+/**
+ * Admin Styles for Slide Media Gallery
+ */
+
+/* Album Manager Container */
+#smg-album-manager {
+    background: #fff;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+/* Toolbar */
+.smg-toolbar {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.smg-toolbar .button {
+    margin-right: 10px;
+}
+
+.smg-toolbar .description {
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Media List */
+#smg-media-list {
+    min-height: 100px;
+}
+
+#smg-media-list.smg-media-sortable {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Media Item */
+.smg-media-item {
+    display: flex;
+    align-items: flex-start;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.2s;
+}
+
+.smg-media-item:hover {
+    background: #f0f0f0;
+    border-color: #999;
+}
+
+.smg-media-item.ui-sortable-helper {
+    opacity: 0.8;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.smg-media-item.ui-sortable-placeholder {
+    visibility: visible !important;
+    background: #e0e0e0;
+    border: 2px dashed #999;
+}
+
+/* Drag Handle */
+.smg-media-handle {
+    flex: 0 0 40px;
+    text-align: center;
+    cursor: move;
+    padding-top: 5px;
+}
+
+.smg-media-handle .dashicons {
+    font-size: 24px;
+    color: #666;
+}
+
+.smg-media-handle:hover .dashicons {
+    color: #333;
+}
+
+/* Media Preview */
+.smg-media-preview {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smg-media-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.smg-media-preview .dashicons {
+    font-size: 48px;
+    color: #ccc;
+}
+
+/* Media Details */
+.smg-media-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.smg-field {
+    margin-bottom: 15px;
+}
+
+.smg-field:last-child {
+    margin-bottom: 0;
+}
+
+.smg-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #23282d;
+}
+
+.smg-field input[type="text"],
+.smg-field textarea {
+    width: 100%;
+}
+
+.smg-field textarea {
+    resize: vertical;
+}
+
+/* Media Actions */
+.smg-media-actions {
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+.smg-remove-media {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.smg-remove-media:hover {
+    background: #c82333;
+    border-color: #bd2130;
+    color: #fff;
+}
+
+.smg-remove-media .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    line-height: 1;
+}
+
+/* Empty State */
+#smg-media-list:empty::before {
+    content: attr(data-empty-text);
+    display: block;
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+}
+
+#smg-media-list:empty {
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    min-height: 150px;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .smg-media-item {
+        flex-wrap: wrap;
+    }
+    
+    .smg-media-preview {
+        flex: 0 0 80px;
+        height: 80px;
+    }
+    
+    .smg-media-details {
+        flex-basis: 100%;
+        margin-top: 15px;
+    }
+}

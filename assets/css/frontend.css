@@ -1,0 +1,231 @@
+/**
+ * Frontend Styles for Slide Media Gallery
+ */
+
+/* Album Wrapper */
+.smg-album-wrapper {
+    margin: 20px 0;
+    padding: 20px;
+}
+
+/* Album Header */
+.smg-album-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.smg-album-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.smg-album-description {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Gallery Grid Layout */
+.smg-album-gallery {
+    display: grid;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.smg-album-gallery.smg-columns-1 {
+    grid-template-columns: 1fr;
+}
+
+.smg-album-gallery.smg-columns-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.smg-album-gallery.smg-columns-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.smg-album-gallery.smg-columns-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.smg-album-gallery.smg-columns-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.smg-album-gallery.smg-columns-6 {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+/* Gallery Item */
+.smg-gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.smg-gallery-item:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+}
+
+/* Gallery Link */
+.smg-gallery-link {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.smg-gallery-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.smg-gallery-link:hover img {
+    transform: scale(1.1);
+}
+
+/* Gallery Caption */
+.smg-gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.smg-gallery-link:hover .smg-gallery-caption {
+    opacity: 1;
+}
+
+.smg-caption-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.smg-caption-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Slider Layout */
+.smg-layout-slider .smg-album-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.smg-layout-slider .smg-gallery-item {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+}
+
+/* Masonry Layout */
+.smg-layout-masonry .smg-album-gallery {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.smg-layout-masonry .smg-gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+}
+
+.smg-layout-masonry .smg-gallery-link img {
+    aspect-ratio: auto;
+    height: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .smg-album-gallery.smg-columns-6,
+    .smg-album-gallery.smg-columns-5 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .smg-layout-masonry .smg-album-gallery {
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .smg-album-wrapper {
+        padding: 15px;
+    }
+    
+    .smg-album-gallery.smg-columns-4,
+    .smg-album-gallery.smg-columns-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .smg-album-gallery {
+        gap: 15px;
+    }
+    
+    .smg-layout-slider .smg-gallery-item {
+        flex: 0 0 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .smg-album-wrapper {
+        padding: 10px;
+    }
+    
+    .smg-album-title {
+        font-size: 1.5em;
+    }
+    
+    .smg-album-gallery.smg-columns-6,
+    .smg-album-gallery.smg-columns-5,
+    .smg-album-gallery.smg-columns-4,
+    .smg-album-gallery.smg-columns-3,
+    .smg-album-gallery.smg-columns-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .smg-album-gallery {
+        gap: 10px;
+    }
+    
+    .smg-layout-masonry .smg-album-gallery {
+        column-count: 1;
+    }
+    
+    .smg-layout-slider .smg-gallery-item {
+        flex: 0 0 200px;
+    }
+}
+
+/* Loading State */
+.smg-album-wrapper.smg-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Empty State */
+.smg-album-gallery:empty::before {
+    content: "No images in this album yet.";
+    display: block;
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+}
