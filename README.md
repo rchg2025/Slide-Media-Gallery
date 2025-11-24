@@ -206,8 +206,8 @@ Vào **Slide Albums → Cài đặt** để cấu hình:
 ## Support
 
 Nếu bạn gặp vấn đề hoặc có câu hỏi, vui lòng liên hệ qua:
-- Email: support@example.com
-- Website: https://example.com
+- Email: info@rongcon.net
+- Website: https://rongcon.net
 
 ## Changelog
 
