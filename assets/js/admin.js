@@ -148,7 +148,7 @@
                     var name = $field.attr('name');
                     if (name) {
                         // Replace old index with new index in name
-                        var newName = name.replace(/\[(\d+)\]/, '[' + currentIndex + ']');
+                        var newName = name.replace(/\[(\d+)\]/, '[' + newIndex + ']');
                         $field.attr('name', newName);
                     }
                 });

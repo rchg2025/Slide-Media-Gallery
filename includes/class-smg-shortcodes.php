@@ -20,13 +20,19 @@ class SMG_Shortcodes {
     
     private function __construct() {
         add_shortcode('smg_album', array($this, 'album_shortcode'));
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_frontend_scripts'));
+        // Scripts will be enqueued conditionally when shortcode is used
     }
     
     /**
-     * Enqueue frontend scripts
+     * Enqueue frontend scripts (called when shortcode is rendered)
      */
-    public function enqueue_frontend_scripts() {
+    private function enqueue_frontend_assets() {
+        static $enqueued = false;
+        
+        if ($enqueued) {
+            return;
+        }
+        
         wp_enqueue_style(
             'smg-frontend-css',
             SMG_PLUGIN_URL . 'assets/css/frontend.css',
@@ -41,6 +47,8 @@ class SMG_Shortcodes {
             SMG_VERSION,
             true
         );
+        
+        $enqueued = true;
     }
     
     /**
@@ -48,6 +56,9 @@ class SMG_Shortcodes {
      * Usage: [smg_album id="123" layout="grid"]
      */
     public function album_shortcode($atts) {
+        // Enqueue assets only when shortcode is used
+        $this->enqueue_frontend_assets();
+        
         $atts = shortcode_atts(array(
             'id' => 0,
             'layout' => 'grid', // grid, slider, masonry
@@ -129,14 +140,17 @@ class SMG_Shortcodes {
      * Get Google Drive image URL
      */
     private function get_google_drive_image_url($url) {
+        // Sanitize the input URL first
+        $url = esc_url_raw($url);
+        
         // Extract file ID from Google Drive URL
         if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
-            $file_id = $matches[1];
-            return "https://drive.google.com/uc?export=view&id={$file_id}";
+            $file_id = sanitize_text_field($matches[1]);
+            return esc_url("https://drive.google.com/uc?export=view&id={$file_id}");
         } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $url, $matches)) {
-            $file_id = $matches[1];
-            return "https://drive.google.com/uc?export=view&id={$file_id}";
+            $file_id = sanitize_text_field($matches[1]);
+            return esc_url("https://drive.google.com/uc?export=view&id={$file_id}");
         }
-        return $url;
+        return esc_url($url);
     }
 }

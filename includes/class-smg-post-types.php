@@ -189,13 +189,16 @@ class SMG_Post_Types {
      * Get Google Drive thumbnail URL
      */
     private function get_google_drive_thumbnail($url) {
+        // Sanitize the input URL first
+        $url = esc_url_raw($url);
+        
         // Extract file ID from Google Drive URL
         if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
-            $file_id = $matches[1];
-            return "https://drive.google.com/thumbnail?id={$file_id}";
+            $file_id = sanitize_text_field($matches[1]);
+            return esc_url("https://drive.google.com/thumbnail?id={$file_id}");
         } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $url, $matches)) {
-            $file_id = $matches[1];
-            return "https://drive.google.com/thumbnail?id={$file_id}";
+            $file_id = sanitize_text_field($matches[1]);
+            return esc_url("https://drive.google.com/thumbnail?id={$file_id}");
         }
         return '';
     }

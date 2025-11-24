@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Slide Media Gallery
  * Plugin URI: https://github.com/rchg2025/Slide-Media-Gallery
- * Description: WordPress plugin tạo slide album ảnh với hỗ trợ Google Drive links và nhiều kiểu hiển thị. Quản lý album dễ dàng với kéo thả và metadata.
+ * Description: Create beautiful image gallery albums with drag-and-drop ordering, Google Drive support, and multiple display layouts. Manage albums easily with photo titles and descriptions.
  * Version: 1.0.0
  * Author: rchg2025
  * Text Domain: slide-media-gallery
