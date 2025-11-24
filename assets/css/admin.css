@@ -1,0 +1,89 @@
+/* Slide Media Gallery - Admin Styles */
+
+.rchg_copy_shortcode {
+    cursor: pointer;
+}
+
+.rchg_shortcode_display {
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.rchg_shortcode_display input[type="text"] {
+    font-family: monospace;
+    font-size: 13px;
+    padding: 8px;
+}
+
+/* Media Library Button Styles */
+#rchg_add_media_btn {
+    margin-left: 5px !important;
+}
+
+#rchg_add_media_btn .dashicons {
+    margin-top: 3px;
+}
+
+.rchg_add_image_section {
+    position: relative;
+}
+
+.rchg_add_image_section .description {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.rchg_add_image_section .description strong {
+    color: #0073aa;
+}
+
+/* Image preview improvements */
+.rchg_image_preview {
+    position: relative;
+}
+
+.rchg_image_preview img {
+    animation: rchgFadeIn 0.3s ease;
+}
+
+@keyframes rchgFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Notice messages */
+.rchg_album_images_container .notice {
+    position: relative;
+    animation: rchgSlideDown 0.3s ease;
+}
+
+@keyframes rchgSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Empty state */
+.rchg_images_list:empty::before {
+    content: "Chưa có ảnh nào. Hãy thêm ảnh từ thư viện hoặc nhập URL.";
+    display: block;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    background: #f9f9f9;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    font-style: italic;
+}
